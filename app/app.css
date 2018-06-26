@@ -19,4 +19,28 @@
     margin-top: 15;
     background-color:#e1a8f9;
     height: 50;
+    font-family: "DJB Get Digital";
+    font-size: 30;
+    color: azure;
+}
+.digital{
+    font-family: "DJB Get Digital";
+}
+
+Image{
+    height: 35;
+}
+
+.list-group-item{
+    color:#212121;
+    font-size:16;
+    margin:0;
+    padding:10;
+}
+
+.timeLabel{
+    font-size: 18;
+}
+.dateLabel{
+    font-size: 12;
 }

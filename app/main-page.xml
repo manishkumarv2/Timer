@@ -6,7 +6,21 @@
     <StackLayout class="p-20">
 
         <Label text="Tap the button" class="h1 text-center"/>
-        <Label text="{{ message }}" class="h2 text-center clock" textWrap="true"/>
+        <GridLayout class="gl-20" columns="*,*,*,*,*,*,*,*" rows="2*" height="60" >
+            <Image id="h0" src="{{ myH0Src }}" col="0" ></Image>
+            <Image id="h1" src="{{ myH1Src }}" col="1" ></Image>
+            <Image id="C0" src="~/images/Colon.png" col="2" ></Image>
+
+            <Image id="m0" src="{{ myM0Src }}" col="3" ></Image>
+            <Image id="m1" src="{{ myM1Src }}" col="4" ></Image>
+            <Image id="C1" src="~/images/Colon.png" col="5" ></Image>
+            
+            <Image id="s0" src="{{ myS0Src }}" col="6" ></Image>
+            <Image id="s1" src="{{ myS1Src }}" col="7" ></Image>
+            
+
+        </GridLayout>
+        <!-- <Label text="{{ message }}" class="h2 text-center clock" textWrap="true"/> -->
 
         <GridLayout class="gl-20" columns="2*, 2*" rows="2*" height="60" >
             <Button col="0" tap="{{ !_isStarted ? onStart : onStop }}" 
@@ -14,5 +28,21 @@
             class="btn btn-change" />
             <Button col="1" text="Reset" tap="{{ onReset }}" class="btn btn-primary  btn-lemon btn-active"/>
         </GridLayout>
+        
+        <ListView class="list-group" itemTap="onItemTap" items="{{ data }}">
+            <ListView.itemTemplate>
+                <StackLayout orientation="vertical" width="auto" height="210" >
+                    <Label class="timeLabel" text="{{ count }}" horizontalAlignment="left"/>
+                    <Label class="dateLabel" text="{{ date }}" horizontalAlignment="right" />
+                </StackLayout>
+            </ListView.itemTemplate>
+			<!-- <ListView.itemTemplate>
+				<GridLayout class="list-group-item" rows="auto, *" columns="auto,*">
+					<Label class="timeLabel" row="0" col="0" text="{{ count }}"></Label>
+                    <Label class="dateLabel" row="0" col="2" text="{{ date }}"></Label>
+				</GridLayout>
+			</ListView.itemTemplate> -->
+		</ListView>
+        
     </StackLayout>
 </Page>
