@@ -1,5 +1,7 @@
 import { Observable } from 'data/observable';
 const ObservableArray = require("data/observable-array").ObservableArray;
+// var couchbaseModule = require("nativescript-couchbase");
+import { Couchbase } from 'nativescript-couchbase';
 
 export class HelloWorldModel extends Observable {
 
@@ -12,8 +14,16 @@ export class HelloWorldModel extends Observable {
     public minutes = "0";
     public seconds = "0";
 
+    public dataArray = [];
+
+    private database: any;
+
     public data = new ObservableArray([
-        { count: "3250", date: "25/06/2018" },
+        // { first: "3250", last: "25/06/2018" },
+        // { first: "3251", last: "25/06/2018" },
+        // { first: "3252", last: "25/06/2018" },
+        // { first: "3253", last: "25/06/2018" },
+        // { first: "3254", last: "25/06/2018" },
     ]);
 
 
@@ -21,6 +31,64 @@ export class HelloWorldModel extends Observable {
         super();
         this.initialize();
 
+        this.database = new Couchbase("test-database");
+
+        this.createData();
+    }
+
+    createData() {
+        // create a document
+        var di = this.database.createDocument({
+            "first": "Rob",
+            "last": "Lauer",
+            "company": "Progress"
+        });
+        this.dataArray.push(di);
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "mob",
+            "last": "Laueasr",
+            "company": "Proasasgress"
+        }));
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "Rob1",
+            "last": "Lauer1",
+            "company": "Progress"
+        }));
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "mob1",
+            "last": "Laueasr1",
+            "company": "Proasasgress"
+        }));
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "Rob2",
+            "last": "Lauer2",
+            "company": "Progress"
+        }));
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "mob2",
+            "last": "Laueasr",
+            "company": "Proasasgress"
+        }));
+
+        this.dataArray.push(this.database.createDocument({
+            "first": "manish",
+            "last": "kumar",
+            "company": "v2Solutions"
+        }));
+        this.dataArray.push(this.database.createDocument({
+            "first": "felix",
+            "last": "idf",
+            "company": "github"
+        }));
+
+        this.dataArray.forEach(element => {
+            this.data.push(this.database.getDocument(element));
+        });
     }
 
     initialize() {

@@ -31,9 +31,9 @@
         
         <ListView class="list-group" itemTap="onItemTap" items="{{ data }}">
             <ListView.itemTemplate>
-                <StackLayout orientation="vertical" width="auto" height="210" >
-                    <Label class="timeLabel" text="{{ count }}" horizontalAlignment="left"/>
-                    <Label class="dateLabel" text="{{ date }}" horizontalAlignment="right" />
+                <StackLayout orientation="vertical" width="auto" height="50" >
+                    <Label class="timeLabel" text="{{ first }}" horizontalAlignment="left"/>
+                    <Label class="dateLabel" text="{{ last }}" horizontalAlignment="right" />
                 </StackLayout>
             </ListView.itemTemplate>
 			<!-- <ListView.itemTemplate>
